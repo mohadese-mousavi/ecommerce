@@ -1,10 +1,21 @@
 import './App.css';
-import {Homepage} from './pages/homepage.component'
+import {Switch, Route} from 'react-router-dom';
+import {Homepage} from './pages/homepage.component';
 
+const Shop = (props) => {
+  console.log(props);
+  return(
+  <h1 className={'shop'}>
+    Shop: {props.match.params.id}
+  </h1>)
+}
 function App() {
   return (
     <div className={'App'}>
-      <Homepage></Homepage>
+      <Switch>
+        <Route exact path='/' component={Homepage}/>
+        <Route path='/shop/:id' component={Shop}/>
+      </Switch>
      
     </div>
   );
